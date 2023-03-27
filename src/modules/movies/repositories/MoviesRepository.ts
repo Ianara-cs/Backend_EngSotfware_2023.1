@@ -1,11 +1,43 @@
+import { v4 as uuid } from "uuid";
 import { dataMovies } from "../../../shared/database/data";
-import { Movies } from "../entities/Movies";
+import { ICreateMovie } from "../dtos/ICreateMovie";
+import { Movie } from "../entities/Movie";
 import { IMoviesRepository } from "./IMoviesRepository";
 
 export class MoviesRepository implements IMoviesRepository {
-    private movies: Movies[] = dataMovies
+    private movies: Movie[] = dataMovies
 
-    async findMovies(): Promise<Movies[]> {
+    async findAll(): Promise<Movie[]> {
         return this.movies
+    }
+
+    async create({name, description, gere, ulr_image, year}: ICreateMovie): Promise<Movie> {
+        const movie = new Movie()
+        Object.assign(movie, {
+            id: uuid(), name, description, gere, ulr_image, year
+        })
+
+        this.movies.push(movie)
+        return movie
+    }
+
+    async findById(id: string): Promise<Movie | undefined> {
+        const movie =  this.movies.find(movie => movie.id == id)
+
+        return movie
+    }
+
+    async findMovieByName(name: string): Promise<Movie | undefined> {
+        const movie =  this.movies.find(movie => movie.name == name)
+
+        return movie
+    }
+
+    async deleteMovie(id: string): Promise<Movie> {
+        const movieId = this.movies.findIndex(movie => movie.id === id)
+
+        const movie = this.movies.splice(movieId, 1)
+
+        return movie[0]
     }
 }
