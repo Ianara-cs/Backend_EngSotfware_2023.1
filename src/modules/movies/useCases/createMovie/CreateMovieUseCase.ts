@@ -12,7 +12,7 @@ export class CreateMovieUseCase {
         private moviesRepository: IMoviesRepository
     ) {}
 
-    async execute({description, gere, name, ulr_image, year}: ICreateMovie): Promise<Movie> {
+    async execute({description, gere, name, url_image, year}: ICreateMovie): Promise<Movie> {
         const movie = await this.moviesRepository.findMovieByName(name)
 
         if (movie) {
@@ -20,7 +20,7 @@ export class CreateMovieUseCase {
         }
         
         const newMovie = this.moviesRepository.create({
-            description, gere, name, ulr_image, year
+            description, gere, name, url_image, year
         })
 
         return newMovie

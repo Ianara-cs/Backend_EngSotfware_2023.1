@@ -4,7 +4,7 @@
             "id": "ffefeorn1",
             "name": "Megan",
             "description": "M3GAN é uma maravilha da inteligência artificial, uma boneca realista programada para ser a melhor amiga de uma criança.",
-            "ulr_image": "http://cms.cm-ourique.pt//upload_files/client_id_1/website_id_1/788313.jpeg",
+            "url_image": "http://cms.cm-ourique.pt//upload_files/client_id_1/website_id_1/788313.jpeg",
             "gere": "Terror",
             "year": 2023
         },
@@ -12,7 +12,7 @@
             "id": "ffefeorn2",
             "name": "Garota do Século 20",
             "description": "Em 1999, uma adolescente monitora atentamente o garoto pelo qual a melhor amiga está apaixonada.",
-            "ulr_image": "https://www.papodecinema.com.br/wp-content/uploads/2022/10/20221020-garota-do-seculo-20-papo-de-cinema-cartaz.png",
+            "url_image": "https://www.papodecinema.com.br/wp-content/uploads/2022/10/20221020-garota-do-seculo-20-papo-de-cinema-cartaz.png",
             "gere": "Drama",
             "year": 2022
         }, 
@@ -20,7 +20,7 @@
             "id": "ffefeorn3",
             "name": "Mulher-Maravilha 1984",
             "description": "A Mulher-Maravilha reúne toda a sua força, sabedoria e coragem e luta com Max Lord e a Mulher-Leopardo, uma vilã que possui força e agilidade sobre-humanas.",
-            "ulr_image": "https://cloud.estacaonerd.com/wp-content/uploads/2020/12/07174954/mulher-maravilha-4-696x870-1.jpg",
+            "url_image": "https://cloud.estacaonerd.com/wp-content/uploads/2020/12/07174954/mulher-maravilha-4-696x870-1.jpg",
             "gere": "Ação",
             "year": 2020
         }  
