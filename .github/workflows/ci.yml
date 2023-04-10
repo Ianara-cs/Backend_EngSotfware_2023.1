@@ -12,7 +12,7 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1.4.5
@@ -28,5 +28,5 @@ jobs:
         run: yarn build
 
       # Rodar os testes unitários
-      name: Test with jest
+      - name: Test with jest
         run: yarn test
