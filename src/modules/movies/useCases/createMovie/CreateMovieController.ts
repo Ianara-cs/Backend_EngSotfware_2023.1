@@ -4,11 +4,11 @@ import { CreateMovieUseCase } from "./CreateMovieUseCase";
 
 export class CreateMovieController {
     async handle(req: Request, res: Response) {
-        const {description, name, gere, year, ulr_image} = req.body
+        const {description, name, gere, year, url_image} = req.body
 
         const createMovieUseCase = container.resolve(CreateMovieUseCase)
 
-        const movie =  await createMovieUseCase.execute({description, gere, name, ulr_image, year})
+        const movie =  await createMovieUseCase.execute({description, gere, name, url_image, year})
 
         return res.status(201).json(movie)
     }
