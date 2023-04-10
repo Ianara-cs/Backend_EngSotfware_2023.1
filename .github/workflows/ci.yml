@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1.4.5
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # Instalar as dependências do projeto
+      - name: Install dependecies
+        run: yarn
+
+      # Executar a build do projeto
+      - name: Run build
+        run: yarn build
