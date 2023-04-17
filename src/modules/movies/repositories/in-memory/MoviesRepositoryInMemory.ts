@@ -1,11 +1,10 @@
 import { v4 as uuid } from "uuid";
-import { dataMovies } from "../../../../shared/database/data";
 import { ICreateMovie } from "../../dtos/ICreateMovie";
 import { Movie } from "../../entities/Movie";
 import { IMoviesRepository } from "./../IMoviesRepository";
 
 export class MoviesRepositoryInMemory implements IMoviesRepository {
-    private movies: Movie[] = dataMovies
+    private movies: Movie[] = []
 
     async findAll(): Promise<Movie[]> {
         return this.movies
