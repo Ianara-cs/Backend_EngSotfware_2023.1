@@ -1,15 +1,15 @@
-import { NextFunction, Request, Response } from "express"
-import { AppError } from "./AppErrors"
+import { type NextFunction, type Request, type Response } from 'express'
+import { AppError } from './AppErrors'
 
-export function errorMiddleware(err: Error, request: Request, response: Response, next: NextFunction) {
-    if(err instanceof AppError) {
-      return response.status(err.statusCode).json({
-        message: err.message
-      })
-    }
-     
-    return response.status(500).json({
-      status: "error",
-      message: `Internal server error - ${err.message}`
+export async function errorMiddleware (err: Error, request: Request, response: Response, next: NextFunction): Promise<Response> {
+  if (err instanceof AppError) {
+    return response.status(err.statusCode).json({
+      message: err.message
     })
+  }
+
+  return response.status(500).json({
+    status: 'error',
+    message: `Internal server error - ${err.message}`
+  })
 }
