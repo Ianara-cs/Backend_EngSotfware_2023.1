@@ -1,14 +1,14 @@
-import { Request, Response } from "express";
-import { container } from "tsyringe";
-import { GetMovieByNameUseCase } from "./GetMovieByNameUseCase";
+import { type Request, type Response } from 'express'
+import { container } from 'tsyringe'
+import { GetMovieByNameUseCase } from './GetMovieByNameUseCase'
 
 export class GetMovieByNameController {
-    async handle(req:Request, res:Response) {
-        const {name} = req.body
-        const getMovieByNameUseCase = container.resolve(GetMovieByNameUseCase)
+  async handle (req: Request, res: Response): Promise<Response> {
+    const { name } = req.body
+    const getMovieByNameUseCase = container.resolve(GetMovieByNameUseCase)
 
-        const movie = await getMovieByNameUseCase.execute(name)
+    const movie = await getMovieByNameUseCase.execute(name)
 
-        return res.status(200).json(movie)
-    }
+    return res.status(200).json(movie)
+  }
 }

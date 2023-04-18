@@ -26,6 +26,10 @@ jobs:
       # Executar a build do projeto
       - name: Run build
         run: yarn build
+      
+      # validar o projeto
+      - name: Lint for typescript (ESLint)
+        run: | yarn run eslint "src/**"
 
       # Rodar os testes unitários
       - name: Test with jest
