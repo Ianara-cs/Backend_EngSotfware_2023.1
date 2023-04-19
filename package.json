@@ -6,9 +6,9 @@
   "author": "Ianara-cs <ianarasilva333@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node build/server.js",
+    "start": "node build/shared/infra/http/server.js",
     "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files",
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "test": "jest --runInBand"
   },
   "devDependencies": {

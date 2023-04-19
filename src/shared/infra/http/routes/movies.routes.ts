@@ -1,8 +1,8 @@
 import { Router } from 'express'
-import { CreateMovieController } from '../modules/movies/useCases/createMovie/CreateMovieController'
-import { GetMovieByIdController } from '../modules/movies/useCases/getMovieById/GetMovieByIdController'
-import { GetMovieByNameController } from '../modules/movies/useCases/getMovieByName/GetMovieByNameController'
-import { GetMoviesController } from '../modules/movies/useCases/getMovies/GetMoviesController'
+import { CreateMovieController } from '../../../../modules/movies/useCases/createMovie/CreateMovieController'
+import { GetMovieByIdController } from '../../../../modules/movies/useCases/getMovieById/GetMovieByIdController'
+import { GetMovieByNameController } from '../../../../modules/movies/useCases/getMovieByName/GetMovieByNameController'
+import { GetMoviesController } from '../../../../modules/movies/useCases/getMovies/GetMoviesController'
 
 export const moviesRoutes = Router()
 
