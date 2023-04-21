@@ -11,6 +11,9 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
     "test": "jest --runInBand"
   },
+  "prisma": {
+    "schema": "src/shared/infra/prisma/schema.prisma"
+  },
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.3",
@@ -19,6 +22,7 @@
     "@babel/preset-typescript": "^7.21.0",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.0",
+    "@types/node": "^18.15.12",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "^8.0.1",
@@ -33,8 +37,10 @@
     "typescript": "^4.5.5"
   },
   "dependencies": {
+    "@prisma/client": "4.13.0",
     "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
+    "prisma": "^4.13.0",
     "reflect-metadata": "^0.1.13",
     "tsyringe": "^4.7.0",
     "uuidv4": "^6.2.13"

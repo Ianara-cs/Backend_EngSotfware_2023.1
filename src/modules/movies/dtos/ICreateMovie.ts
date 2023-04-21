@@ -1,7 +1,7 @@
 export interface ICreateMovie {
   name: string
   description: string
-  urlImage: string
+  movieCoverImage: string
   gere: string
   year: number
 }

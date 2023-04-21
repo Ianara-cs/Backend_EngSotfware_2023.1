@@ -10,24 +10,28 @@ export class MoviesRepositoryInMemory implements IMoviesRepository {
     return this.movies
   }
 
-  async create ({ name, description, gere, urlImage, year }: ICreateMovie): Promise<Movie> {
+  async create ({ name, description, gere, movieCoverImage, year }: ICreateMovie): Promise<Movie> {
     const movie = new Movie()
     Object.assign(movie, {
-      id: uuid(), name, description, gere, url_image: urlImage, year
+      id: uuid(), name, description, gere, movieCoverImage, year
     })
 
     this.movies.push(movie)
     return movie
   }
 
-  async findById (id: string): Promise<Movie | undefined> {
+  async findById (id: string): Promise<Movie | null> {
     const movie = this.movies.find(movie => movie.id === id)
+
+    if (movie === undefined) {
+      return null
+    }
 
     return movie
   }
 
-  async findMovieByName (name: string): Promise<Movie | undefined> {
-    const movie = this.movies.find(movie => movie.name === name)
+  async findMoviesByName (name: string): Promise<Movie[]> {
+    const movie = this.movies.filter(movie => movie.name === name)
 
     return movie
   }

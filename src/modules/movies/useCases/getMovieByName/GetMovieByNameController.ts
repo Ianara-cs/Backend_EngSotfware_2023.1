@@ -7,8 +7,8 @@ export class GetMovieByNameController {
     const { name } = req.body
     const getMovieByNameUseCase = container.resolve(GetMovieByNameUseCase)
 
-    const movie = await getMovieByNameUseCase.execute(name)
+    const movies = await getMovieByNameUseCase.execute(name)
 
-    return res.status(200).json(movie)
+    return res.status(200).json(movies)
   }
 }

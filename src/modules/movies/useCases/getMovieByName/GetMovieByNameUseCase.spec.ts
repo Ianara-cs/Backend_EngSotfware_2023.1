@@ -1,4 +1,3 @@
-import { NotFoundException } from '../../../../shared/errors/AppErrors'
 import { MoviesRepositoryInMemory } from '../../repositories/in-memory/MoviesRepositoryInMemory'
 import { GetMovieByNameUseCase } from './GetMovieByNameUseCase'
 
@@ -15,17 +14,13 @@ describe('Get Movie By Name', () => {
     const newMovie = await moviesRepositoryInMemory.create({
       name: 'Sorria',
       description: 'Após um paciente cometer um suicídio brutal em sua frente, a psiquiatra Rose é perseguida por uma entidade maligna que muda de forma.',
-      urlImage: '',
+      movieCoverImage: '',
       gere: 'Terror',
       year: 2022
     })
 
-    const movie = await getMovieByNameUseCase.execute(newMovie.name)
-    expect(movie).toHaveProperty('id')
-  })
-
-  it('should not be able to get a movie if the name does not exist', async () => {
-    await expect(getMovieByNameUseCase.execute('000')).rejects
-      .toEqual(new NotFoundException('Movie not found!'))
+    const movies = await getMovieByNameUseCase.execute(newMovie.name)
+    expect(movies.length).toEqual(1)
+    expect(movies[0]).toHaveProperty('id')
   })
 })

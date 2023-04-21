@@ -14,7 +14,7 @@ describe('Get Movies', () => {
     await moviesRepositoryInMemory.create({
       name: 'Sorria',
       description: 'Após um paciente cometer um suicídio brutal em sua frente, a psiquiatra Rose é perseguida por uma entidade maligna que muda de forma.',
-      urlImage: '',
+      movieCoverImage: '',
       gere: 'Terror',
       year: 2022
     })
@@ -22,7 +22,7 @@ describe('Get Movies', () => {
     await moviesRepositoryInMemory.create({
       name: 'Eternos',
       description: 'descrição.',
-      urlImage: '',
+      movieCoverImage: '',
       gere: 'Ação',
       year: 2021
     })
