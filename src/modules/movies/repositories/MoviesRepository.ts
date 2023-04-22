@@ -1,43 +1,58 @@
-import { v4 as uuid } from 'uuid'
-import { dataMovies } from '../../../shared/database/data'
+import { prisma } from '../../../shared/infra/prisma/prismaClient'
 import { type ICreateMovie } from '../dtos/ICreateMovie'
-import { Movie } from '../entities/Movie'
+import { type Movie } from '../entities/Movie'
 import { type IMoviesRepository } from './IMoviesRepository'
 
 export class MoviesRepository implements IMoviesRepository {
-  private readonly movies: Movie[] = dataMovies
-
   async findAll (): Promise<Movie[]> {
-    return this.movies
+    const movies = await prisma.movie.findMany()
+
+    return movies
   }
 
-  async create ({ name, description, gere, urlImage, year }: ICreateMovie): Promise<Movie> {
-    const movie = new Movie()
-    Object.assign(movie, {
-      id: uuid(), name, description, gere, url_image: urlImage, year
+  async create ({ name, description, gere, year }: ICreateMovie): Promise<Movie> {
+    const movie = await prisma.movie.create({
+      data: {
+        name, description, gere, year
+      }
     })
 
-    this.movies.push(movie)
     return movie
   }
 
-  async findById (id: string): Promise<Movie | undefined> {
-    const movie = this.movies.find(movie => movie.id === id)
+  async findById (id: string): Promise<Movie | null> {
+    const movie = await prisma.movie.findUnique({
+      where: { id }
+    })
 
     return movie
   }
 
-  async findMovieByName (name: string): Promise<Movie | undefined> {
-    const movie = this.movies.find(movie => movie.name === name)
+  async findMoviesByName (name: string): Promise<Movie[]> {
+    const movies = await prisma.movie.findMany({
+      where: { name: { startsWith: name } }
+    })
 
-    return movie
+    return movies
   }
 
   async deleteMovie (id: string): Promise<Movie> {
-    const movieId = this.movies.findIndex(movie => movie.id === id)
+    const movie = await prisma.movie.delete({
+      where: { id }
+    })
 
-    const movie = this.movies.splice(movieId, 1)
+    return movie
+  }
 
-    return movie[0]
+  async updateMovieCover (id: string, fileUrl: string, fileName: string): Promise<Movie> {
+    const movie = await prisma.movie.update({
+      where: { id },
+      data: {
+        movieCoverImage: fileName,
+        movieCoverUrl: fileUrl
+      }
+    })
+
+    return movie
   }
 }
