@@ -15,7 +15,6 @@ describe('Get Movie By Id', () => {
     const newMovie = await moviesRepositoryInMemory.create({
       name: 'Sorria',
       description: 'Após um paciente cometer um suicídio brutal em sua frente, a psiquiatra Rose é perseguida por uma entidade maligna que muda de forma.',
-      urlImage: '',
       gere: 'Terror',
       year: 2022
     })
@@ -26,7 +25,7 @@ describe('Get Movie By Id', () => {
   })
 
   it('should not be able to get a movie that does not exist', async () => {
-    await expect(getMovieByIdUseCase.execute('000')).rejects
+    await expect(getMovieByIdUseCase.execute('000d')).rejects
       .toEqual(new NotFoundException('Movie not found!'))
   })
 })

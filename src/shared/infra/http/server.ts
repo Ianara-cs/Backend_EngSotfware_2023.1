@@ -1,8 +1,8 @@
 import express from 'express'
 import 'express-async-errors'
 import 'reflect-metadata'
+import { errorMiddleware } from '../../errors/errorMiddleware'
 import { router } from './routes'
-import { errorMiddleware } from './shared/errors/errorMiddleware'
 
 const app = express()
 

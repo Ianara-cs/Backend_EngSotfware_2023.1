@@ -1,6 +1,5 @@
 import { inject, injectable } from 'tsyringe'
 import { INJECT } from '../../../../shared/container'
-import { AppError } from '../../../../shared/errors/AppErrors'
 import { type ICreateMovie } from '../../dtos/ICreateMovie'
 import { type Movie } from '../../entities/Movie'
 import { IMoviesRepository } from '../../repositories/IMoviesRepository'
@@ -12,15 +11,9 @@ export class CreateMovieUseCase {
     private readonly moviesRepository: IMoviesRepository
   ) {}
 
-  async execute ({ description, gere, name, urlImage, year }: ICreateMovie): Promise<Movie> {
-    const movie = await this.moviesRepository.findMovieByName(name)
-
-    if (movie) {
-      throw new AppError('Movie already exists!')
-    }
-
+  async execute ({ description, gere, name, year }: ICreateMovie): Promise<Movie> {
     const newMovie = this.moviesRepository.create({
-      description, gere, name, urlImage, year
+      description, gere, name, year
     })
 
     return await newMovie
