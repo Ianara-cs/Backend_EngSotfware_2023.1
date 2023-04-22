@@ -5,7 +5,7 @@ import { resolve } from 'path'
 import upload from '../../../../config/upload'
 import { type IStorageProvider } from '../IStorageProvider'
 
-import key from './../../../infra/firebase/serviceAccountKey.json'
+import { key } from '../../../infra/firebase/firebaseConfig'
 
 export class FirebaseStorageProvider implements IStorageProvider {
   private readonly bucket
