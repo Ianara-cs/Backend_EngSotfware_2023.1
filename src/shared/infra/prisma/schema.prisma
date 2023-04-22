@@ -14,7 +14,8 @@ model Movie {
   id              String   @id() @default(uuid())
   name            String
   description     String
-  movieCoverImage String
+  movieCoverImage String?
+  movieCoverUrl   String?
   gere            String
   year            Int
   createdAt       DateTime @default(now())

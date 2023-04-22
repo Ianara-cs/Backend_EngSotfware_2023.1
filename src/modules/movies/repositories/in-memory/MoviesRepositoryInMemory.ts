@@ -10,10 +10,10 @@ export class MoviesRepositoryInMemory implements IMoviesRepository {
     return this.movies
   }
 
-  async create ({ name, description, gere, movieCoverImage, year }: ICreateMovie): Promise<Movie> {
+  async create ({ name, description, gere, year }: ICreateMovie): Promise<Movie> {
     const movie = new Movie()
     Object.assign(movie, {
-      id: uuid(), name, description, gere, movieCoverImage, year
+      id: uuid(), name, description, gere, year
     })
 
     this.movies.push(movie)
@@ -42,5 +42,13 @@ export class MoviesRepositoryInMemory implements IMoviesRepository {
     const movie = this.movies.splice(movieId, 1)
 
     return movie[0]
+  }
+
+  async updateMovieCover (id: string, fileUrl: string, fileName: string): Promise<Movie> {
+    const movieId = this.movies.findIndex(movie => movie.id === id)
+    this.movies[movieId].movieCoverUrl = fileUrl
+    this.movies[movieId].movieCoverImage = fileName
+
+    return this.movies[movieId]
   }
 }

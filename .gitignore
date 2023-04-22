@@ -2,4 +2,6 @@ node_modules
 
 build
 
+src/shared/infra/firebase/serviceAccountKey.json
+
 .env

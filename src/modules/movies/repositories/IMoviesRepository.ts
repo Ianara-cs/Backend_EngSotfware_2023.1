@@ -7,4 +7,5 @@ export interface IMoviesRepository {
   findById: (id: string) => Promise<Movie | null>
   findMoviesByName: (name: string) => Promise<Movie[]>
   deleteMovie: (id: string) => Promise<Movie>
+  updateMovieCover: (id: string, fileUrl: string, fileName: string) => Promise<Movie>
 }

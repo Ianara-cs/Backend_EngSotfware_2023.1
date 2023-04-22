@@ -10,10 +10,10 @@ export class MoviesRepository implements IMoviesRepository {
     return movies
   }
 
-  async create ({ name, description, gere, movieCoverImage, year }: ICreateMovie): Promise<Movie> {
+  async create ({ name, description, gere, year }: ICreateMovie): Promise<Movie> {
     const movie = await prisma.movie.create({
       data: {
-        name, description, gere, movieCoverImage, year
+        name, description, gere, year
       }
     })
 
@@ -39,6 +39,18 @@ export class MoviesRepository implements IMoviesRepository {
   async deleteMovie (id: string): Promise<Movie> {
     const movie = await prisma.movie.delete({
       where: { id }
+    })
+
+    return movie
+  }
+
+  async updateMovieCover (id: string, fileUrl: string, fileName: string): Promise<Movie> {
+    const movie = await prisma.movie.update({
+      where: { id },
+      data: {
+        movieCoverImage: fileName,
+        movieCoverUrl: fileUrl
+      }
     })
 
     return movie

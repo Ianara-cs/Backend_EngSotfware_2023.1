@@ -14,7 +14,6 @@ describe('Create Movie', () => {
     const movie = await createMovieUseCase.execute({
       name: 'Sorria',
       description: 'Após um paciente cometer um suicídio brutal em sua frente, a psiquiatra Rose é perseguida por uma entidade maligna que muda de forma.',
-      movieCoverImage: '',
       gere: 'Terror',
       year: 2022
     })

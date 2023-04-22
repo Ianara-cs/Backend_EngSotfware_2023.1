@@ -11,9 +11,9 @@ export class CreateMovieUseCase {
     private readonly moviesRepository: IMoviesRepository
   ) {}
 
-  async execute ({ description, gere, name, movieCoverImage, year }: ICreateMovie): Promise<Movie> {
+  async execute ({ description, gere, name, year }: ICreateMovie): Promise<Movie> {
     const newMovie = this.moviesRepository.create({
-      description, gere, name, movieCoverImage, year
+      description, gere, name, year
     })
 
     return await newMovie
